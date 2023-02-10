@@ -1,0 +1,69 @@
+﻿<div id="container">
+    <span id="centeredText">カスタム　ラベル</span>
+    <IgbDoughnutChart Name="chart" Width="100%" Height="100%">
+        <IgbRingSeries DataSource="CompanyMarketShares"
+                        ValueMemberPath="Value"
+                        LabelMemberPath="Summary"
+                        Name="series">
+        </IgbRingSeries>
+    </IgbDoughnutChart>
+</div>
+
+<style>
+    #container {
+        width: 500px;
+        height: 500px;
+        position: relative;
+    }
+    #centeredText {
+        font-size:smaller;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+@code {
+    public List<CompanyMarketSharesItem>? CompanyMarketShares;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        CompanyMarketShares = new List<CompanyMarketSharesItem>()
+        {
+            new CompanyMarketSharesItem()
+                {
+                    Value = 30,
+                    Summary = @"Google 30%"
+                },
+            new CompanyMarketSharesItem()
+                {
+                    Value = 25,
+                    Summary = @"Apple 25%"
+                },
+            new CompanyMarketSharesItem()
+                {
+                    Value = 20,
+                    Summary = @"Microsoft 20%"
+                },
+            new CompanyMarketSharesItem()
+                {
+                    Value = 15,
+                    Summary = @"Samsung 15%"
+                },
+            new CompanyMarketSharesItem()
+                {
+                    Value = 10,
+                    Summary = @"Other 10%"
+                }
+        };
+    }
+
+    public class CompanyMarketSharesItem
+    {
+        public double Value { get; set; }
+        public string? Summary { get; set; }
+    }
+}
